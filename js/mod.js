@@ -1,11 +1,11 @@
 let modInfo = {
-	name: "The Modding Tree",
-	id: "Slime Adventure",
+	name: "The Distance Tree",
+	id: "dis2T",
 	author: "",
-	pointsName: "points",
+	pointsName: "meters",
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new EN (10), // Used for hard resets and new players
+	initialStartPoints: new EN(0.0000000000000000000000000000000000000000000000000001), // Used for hard resets and new players
 	
 	offlineLimit: 1,  // In hours
 }
@@ -48,7 +48,7 @@ function getStartPoints(){
 
 // Determines if it should show points/sec
 function canGenPoints(){
-	return hasUpgrade("p", 11);
+	return true
 }
 
 // Calculate points/sec!
@@ -56,20 +56,8 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new EN(0)
 
-	let gain = new EN(1)
-	if (hasUpgrade('p', 12)) gain = gain.times(2)
-	if (hasUpgrade('p', 21)) gain = gain.times(upgradeEffect("p",21))
-	if (hasUpgrade('p', 22)) gain = gain.times(upgradeEffect("p",22))
-	if (hasUpgrade('p', 31)) gain = gain.times(upgradeEffect("p",31))
-	if (player.m.unlocked) gain = gain.times(tmp.m.effect);
-	if (hasUpgrade('ma', 13)) gain = gain.times(upgradeEffect("ma",13))
-	if (player.ma.unlocked) gain = gain.times(tmp.ma.buyables[11].effect.first);
-	if (player.up.unlocked) gain = gain.times(tmp.up.effect);
-	if (inChallenge("up", 11)) gain = gain = gain.root(challengeNerf("up", 11));
-	if (hasChallenge("up", 12)) gain = gain.pow(challengeEffect("up", 12));
-	if (hasUpgrade('pa', 12)) gain = gain.times(upgradeEffect("pa",12))
-	if (hasUpgrade("p",44)) gain = gain.pow(tmp.ma.buyables[13].effect.first);
-	if (hasUpgrade("g",21)) gain = gain.times(50);
+	let gain = new EN(0.0000000000000000000000000000000000000000000000000001)
+	
 	return gain
 }
 
